@@ -10,8 +10,8 @@ import { Flight } from '@flight-workspace/flight-lib';
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FlightCardComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() item: Flight;
-  @Input() selected: boolean;
+  @Input() item: Flight | undefined;
+  @Input() selected = false;
   @Output() selectedChange = new EventEmitter<boolean>();
 
   constructor(private element: ElementRef, private zone: NgZone) {}
@@ -43,7 +43,5 @@ export class FlightCardComponent implements OnInit, OnChanges, OnDestroy {
         this.element.nativeElement.firstChild.style.backgroundColor = 'white';
       }, 1000);
     });
-
-    return null;
   }
 }

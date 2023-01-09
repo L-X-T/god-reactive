@@ -46,10 +46,10 @@ export class FlightService {
   }
 
   findById(id: string): Observable<Flight> {
-    const reqObj = { params: null };
-    reqObj.params = new HttpParams().set('id', id);
+    const params = new HttpParams().set('id', id);
+    const headers = new HttpHeaders().set('Accept', 'application/json');
     const url = [this.baseUrl, 'flight'].join('/');
-    return this.http.get<Flight>(url, reqObj);
+    return this.http.get<Flight>(url, { params, headers });
     // return of(flights[0]).pipe(delay(this.reqDelay))
   }
 

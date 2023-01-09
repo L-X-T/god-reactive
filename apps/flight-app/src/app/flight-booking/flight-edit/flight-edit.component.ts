@@ -6,8 +6,8 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './flight-edit.component.html'
 })
 export class FlightEditComponent implements OnInit {
-  id: string;
-  showDetails: string;
+  id = '';
+  showDetails = false;
   showWarning = false;
 
   constructor(private route: ActivatedRoute) {}

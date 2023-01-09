@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
   expertMode = false;
-  needsLogin$: Observable<boolean>;
+  needsLogin$: Observable<boolean> | undefined;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  changed($event): void {
+  changed($event: any): void {
     console.debug('$event.detail ', $event.target.detail);
 
     this.expertMode = $event.detail;

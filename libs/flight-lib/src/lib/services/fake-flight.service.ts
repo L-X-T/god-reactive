@@ -28,16 +28,15 @@ export class FakeFlightService {
     );
   }
 
-  findById(id: string): Observable<Flight> {
-    return of(fakeFlights.find((f) => f.id === parseInt(id, 10)));
+  findById(id: string): Observable<Flight | undefined> {
+    return of(fakeFlights.find((f) => f.id === parseInt(id, 10))) as Observable<Flight | undefined>;
   }
 
   save(flight: Flight): Observable<Flight> {
     if (!flight.id) {
       fakeFlights.push(flight);
     } else {
-      const flightToUpdate = fakeFlights.find((f) => f.id === flight.id);
-      Object.assign(flightToUpdate, flight);
+      fakeFlights.map((f) => (f.id === flight.id ? flight : f));
     }
 
     return of(flight);
